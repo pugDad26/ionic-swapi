@@ -17,7 +17,10 @@ export class HomePage {
         data => this.planets = [
           ...this.planets
           , ...data
-        ].sort((a, b) => a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1) 
+        ].map(x => ({
+          ...x
+          , displayColor: x.name == 'unknown' ? 'goldenrod' : 'inherit'
+        })).sort((a, b) => a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1) 
         , err => console.error(err)
       );
   }
